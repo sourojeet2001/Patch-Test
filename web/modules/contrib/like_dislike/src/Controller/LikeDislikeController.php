@@ -109,13 +109,6 @@ class LikeDislikeController extends ControllerBase {
       $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
       $entity_data->save();
     }
-    if ($already_clicked_users == NULL) {
-      $entity_data->$field_name->likes = 0;
-      $entity_data->$field_name->dislikes = 0;
-      $already_clicked_users = new \stdClass();
-      $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
-      $entity_data->save();
-    }
     if ($clicked == 'like') {
       $entity_data->$field_name->likes++;
       $entity_data->save();
