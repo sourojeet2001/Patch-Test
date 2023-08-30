@@ -1,0 +1,12 @@
+{
+  "name": "drupal/like_dislike",
+  "description": "Like/Dislike module can be used to Like and Dislike actions on any content. It is powered by Drupal field concept.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "homepage": "https://www.drupal.org/project/like_dislike",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/like_dislike",
+    "source": "https://git.drupalcode.org/project/like_dislike"
+  }
+}

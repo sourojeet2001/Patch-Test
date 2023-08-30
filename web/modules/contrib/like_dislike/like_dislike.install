@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the like_dislike module.
+ */
+
+/**
+ * Add data holder to like/dislike field to capture the value of disable.
+ */
+function like_dislike_update_8001() {
+  $database = \Drupal::database();
+  $data = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('like_dislike');
+  foreach ($data as $entity_name => $fields) {
+    foreach ($fields as $field_name => $value) {
+      $tables = [];
+      if ($entity_name == "comment") {
+        $tables = [
+          "{$entity_name}__$field_name",
+        ];
+      }
+      else {
+        $tables = [
+          "{$entity_name}__$field_name",
+          "{$entity_name}_revision__$field_name",
+        ];
+      }
+      $existing_data = [];
+      foreach ($tables as $table) {
+        $existing_data[$table] = $database->select($table)->fields($table)->execute()->fetchAll(\PDO::FETCH_ASSOC);
+        $database->truncate($table)->execute();
+      }
+      foreach ($tables as $table) {
+        if (!\Drupal::database()->schema()->fieldExists($table, "{$field_name}_disable")) {
+          $new_field_spec = [
+            'type' => 'int',
+            'size' => 'tiny',
+            'not null' => FALSE,
+            'default' => 0,
+          ];
+          $schema = \Drupal::database()->schema();
+          $schema->addField($table, "{$field_name}_disable", $new_field_spec);
+        }
+      }
+      foreach ($tables as $table) {
+        if (!empty($existing_data[$table])) {
+          $insert_query = $database->insert($table)->fields(array_keys(end($existing_data[$table])));
+          foreach ($existing_data[$table] as $row) {
+            $insert_query->values(array_values($row));
+          }
+          $insert_query->execute();
+        }
+      }
+    }
+  }
+}

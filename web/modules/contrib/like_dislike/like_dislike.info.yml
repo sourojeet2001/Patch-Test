@@ -1,0 +1,10 @@
+name: Like/Dislike
+type: module
+description: Add a Like/Dislike field on any entity (like content type, comment type etc) and get the users count on the entities.
+core_version_requirement: '>=8.9 < 11.0.0-stable'
+package: Content
+
+# Information added by Drupal.org packaging script on 2023-07-29
+version: '2.4.1'
+project: 'like_dislike'
+datestamp: 1690628515
