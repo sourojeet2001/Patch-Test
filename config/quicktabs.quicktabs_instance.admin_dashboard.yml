@@ -1,0 +1,84 @@
+uuid: ed12aa09-c1a0-4e9c-9bd0-7a2f57f5e8ac
+langcode: en
+status: true
+dependencies: {  }
+id: admin_dashboard
+label: 'Admin Dashboard'
+renderer: quick_tabs
+hide_empty_tabs: false
+default_tab: 9999
+options:
+  quick_tabs:
+    ajax: false
+    class: ''
+    style: ''
+configuration_data:
+  -
+    title: 'Inactivity Status'
+    weight: 0
+    type: block_content
+    content:
+      view_content:
+        options:
+          vid: active_students
+          display: default
+          args: ''
+      block_content:
+        options:
+          bid: 'views_block:inactivity_count-block_1'
+          block_title: ''
+          display_title: false
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: true
+      qtabs_content:
+        options:
+          machine_name: ''
+  -
+    title: 'Asset Access Count'
+    weight: 0
+    type: block_content
+    content:
+      view_content:
+        options:
+          vid: active_students
+          display: default
+          args: ''
+      block_content:
+        options:
+          bid: 'views_block:asset_access_count-block_1'
+          block_title: ''
+          display_title: false
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: true
+      qtabs_content:
+        options:
+          machine_name: ''
+  -
+    title: 'Document Uploads'
+    weight: 0
+    type: block_content
+    content:
+      view_content:
+        options:
+          vid: active_students
+          display: default
+          args: ''
+      block_content:
+        options:
+          bid: 'views_block:document_uploads-block_1'
+          block_title: ''
+          display_title: false
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: true
+      qtabs_content:
+        options:
+          machine_name: ''

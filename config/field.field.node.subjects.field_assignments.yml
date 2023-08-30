@@ -1,0 +1,27 @@
+uuid: bd3a8c73-1552-4d04-8b6e-1f9bc7434981
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assignments
+    - node.type.subjects
+  module:
+    - file
+id: node.subjects.field_assignments
+field_name: field_assignments
+entity_type: node
+bundle: subjects
+label: Assignments
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: assignments
+  file_extensions: 'txt pdf doc ppt'
+  max_filesize: ''
+  description_field: false
+field_type: file

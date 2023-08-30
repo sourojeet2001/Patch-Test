@@ -1,0 +1,59 @@
+uuid: 3b96a1c0-c2e2-4ccd-adfc-0944b8b69e3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.hod
+    - field.field.user.user.field_full_name
+    - field.field.user.user.field_graduation_year
+    - field.field.user.user.field_joining_year
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_stream
+    - field.field.user.user.user_picture
+  module:
+    - telephone
+    - user
+_core:
+  default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
+id: user.user.hod
+targetEntityType: user
+bundle: user
+mode: hod
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_full_name:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mobile_no:
+    type: telephone_default
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  language:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_graduation_year: true
+  field_joining_year: true
+  field_stream: true
+  langcode: true
+  user_picture: true

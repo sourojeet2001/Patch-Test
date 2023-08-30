@@ -1,0 +1,18 @@
+uuid: 80e615da-a468-4eca-becf-81ab7dddd47a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Custom API Fetch'
+type: custom_api_fetch
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

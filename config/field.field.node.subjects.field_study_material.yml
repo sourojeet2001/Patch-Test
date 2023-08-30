@@ -1,0 +1,27 @@
+uuid: 30aa1d2a-5b56-43bf-9c94-6872bde02e92
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_study_material
+    - node.type.subjects
+  module:
+    - file
+id: node.subjects.field_study_material
+field_name: field_study_material
+entity_type: node
+bundle: subjects
+label: 'Study Material'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'study materials'
+  file_extensions: 'txt pdf doc ppt'
+  max_filesize: ''
+  description_field: false
+field_type: file

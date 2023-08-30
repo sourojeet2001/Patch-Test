@@ -1,0 +1,27 @@
+uuid: a8a91e94-9a04-41d6-b6a1-7a8b16dca10d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_api_attachments
+    - node.type.custom_api_fetch
+  module:
+    - file
+id: node.custom_api_fetch.field_api_attachments
+field_name: field_api_attachments
+entity_type: node
+bundle: custom_api_fetch
+label: 'API Attachments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'API Attachments'
+  file_extensions: 'txt pdf doc ppt'
+  max_filesize: ''
+  description_field: false
+field_type: file

@@ -1,0 +1,37 @@
+uuid: 97caba73-d79e-4719-b866-66104a5cba9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.custom_api_fetch.body
+    - field.field.node.custom_api_fetch.field_api_attachments
+    - field.field.node.custom_api_fetch.field_api_image
+    - field.field.node.custom_api_fetch.field_price
+    - node.type.custom_api_fetch
+  module:
+    - text
+    - user
+id: node.custom_api_fetch.teaser
+targetEntityType: node
+bundle: custom_api_fetch
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_api_attachments: true
+  field_api_image: true
+  field_price: true
+  langcode: true

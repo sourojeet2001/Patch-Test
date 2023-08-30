@@ -1,0 +1,27 @@
+uuid: ca152159-6af5-466f-bb1a-937c410997fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_assets
+    - node.type.subjects
+  module:
+    - file
+id: node.subjects.field_other_assets
+field_name: field_other_assets
+entity_type: node
+bundle: subjects
+label: 'Other Assets'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'other assets'
+  file_extensions: 'txt pdf doc ppt'
+  max_filesize: ''
+  description_field: false
+field_type: file

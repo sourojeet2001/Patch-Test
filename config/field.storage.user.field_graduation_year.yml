@@ -1,0 +1,19 @@
+uuid: ddec3c21-7cb8-4393-9fd2-d9ce4e196494
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+    - yearonly
+id: user.field_graduation_year
+field_name: field_graduation_year
+entity_type: user
+type: yearonly
+settings: {  }
+module: yearonly
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

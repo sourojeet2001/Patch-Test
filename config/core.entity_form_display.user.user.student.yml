@@ -1,0 +1,75 @@
+uuid: d8fcd431-5c79-4302-9afc-508d6b4edfb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.student
+    - field.field.user.user.field_full_name
+    - field.field.user.user.field_graduation_year
+    - field.field.user.user.field_joining_year
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_stream
+    - field.field.user.user.user_picture
+  module:
+    - telephone
+    - user
+    - yearonly
+_core:
+  default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
+id: user.user.student
+targetEntityType: user
+bundle: user
+mode: student
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_full_name:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_graduation_year:
+    type: yearonly_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_joining_year:
+    type: yearonly_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_mobile_no:
+    type: telephone_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_stream:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  language:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  contact: true
+  langcode: true
+  user_picture: true

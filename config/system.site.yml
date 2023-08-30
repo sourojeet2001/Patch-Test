@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: 401b2a8a-eae9-4b55-8870-b874578bd80b
+name: Module4
+mail: sourojeet.paul@innoraft.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /notice-board
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

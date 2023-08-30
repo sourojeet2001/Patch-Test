@@ -1,0 +1,8 @@
+uuid: f1843e1a-d59b-4180-b916-06be6a790dbc
+langcode: en
+status: true
+dependencies: {  }
+name: Stream
+vid: stream
+description: ''
+weight: 0

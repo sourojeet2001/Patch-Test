@@ -1,0 +1,25 @@
+uuid: 2c855942-6bed-41ec-aace-a77a762e4c51
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.sign-in-sign-up
+  module:
+    - system
+  theme:
+    - olivero
+id: olivero_signinsignup
+theme: olivero
+region: header
+weight: -10
+provider: null
+plugin: 'system_menu_block:sign-in-sign-up'
+settings:
+  id: 'system_menu_block:sign-in-sign-up'
+  label: 'Sign In/ Sign Up'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

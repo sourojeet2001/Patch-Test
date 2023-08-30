@@ -1,0 +1,42 @@
+uuid: d3ab7ccd-e23e-4f80-97da-f61687e4ec99
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_full_name
+    - field.field.user.user.field_graduation_year
+    - field.field.user.user.field_joining_year
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_stream
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: 00zr_RBdTjPjBGITD3h4c1ESQZimjdVCcHGt1trLqIY
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  user_picture:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_full_name: true
+  field_graduation_year: true
+  field_joining_year: true
+  field_mobile_no: true
+  field_stream: true
+  langcode: true
+  member_for: true

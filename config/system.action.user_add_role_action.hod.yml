@@ -1,0 +1,14 @@
+uuid: f57b9234-ffe2-47cb-a5c4-6e39f560a58e
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.hod
+  module:
+    - user
+id: user_add_role_action.hod
+label: 'Add the HOD role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: hod

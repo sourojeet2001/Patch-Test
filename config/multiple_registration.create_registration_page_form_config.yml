@@ -1,0 +1,8 @@
+roles:
+  student:
+    path: /user/register
+    url: /user/register/student
+    redirect_path: /user/register
+    hidden: 0
+    form_mode_register: student
+    form_mode_edit: student

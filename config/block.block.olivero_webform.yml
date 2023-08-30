@@ -1,0 +1,31 @@
+uuid: 8393c1d9-4be5-4c7c-b11e-b4198a18cf9a
+langcode: en
+status: false
+dependencies:
+  config:
+    - webform.webform.multistep
+  module:
+    - system
+    - webform
+  theme:
+    - olivero
+id: olivero_webform
+theme: olivero
+region: content
+weight: -11
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: Webform
+  label_display: visible
+  provider: webform
+  webform_id: multistep
+  default_data: ''
+  redirect: false
+  lazy: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

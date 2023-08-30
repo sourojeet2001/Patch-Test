@@ -1,0 +1,64 @@
+uuid: 4d64888a-5334-4d21-9202-49d57844c1cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.custom_api_fetch.body
+    - field.field.node.custom_api_fetch.field_api_attachments
+    - field.field.node.custom_api_fetch.field_api_image
+    - field.field.node.custom_api_fetch.field_price
+    - node.type.custom_api_fetch
+  module:
+    - file
+    - image
+    - text
+    - user
+id: node.custom_api_fetch.default
+targetEntityType: node
+bundle: custom_api_fetch
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_api_attachments:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_api_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_price:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

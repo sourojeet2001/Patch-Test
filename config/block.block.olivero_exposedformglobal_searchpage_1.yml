@@ -1,0 +1,23 @@
+uuid: cc6abfcc-1499-4cc7-bab7-0ac525a3f826
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.global_search
+  module:
+    - views
+  theme:
+    - olivero
+id: olivero_exposedformglobal_searchpage_1
+theme: olivero
+region: primary_menu
+weight: -8
+provider: null
+plugin: 'views_exposed_filter_block:global_search-page_1'
+settings:
+  id: 'views_exposed_filter_block:global_search-page_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+visibility: {  }

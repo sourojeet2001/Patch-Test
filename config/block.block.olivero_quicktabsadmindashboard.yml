@@ -1,0 +1,25 @@
+uuid: 7b77ab47-ba9b-41c3-96d0-7e85f4e2c860
+langcode: en
+status: true
+dependencies:
+  module:
+    - quicktabs
+    - system
+  theme:
+    - olivero
+id: olivero_quicktabsadmindashboard
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: 'quicktabs_block:admin_dashboard'
+settings:
+  id: 'quicktabs_block:admin_dashboard'
+  label: 'QuickTabs - Admin Dashboard'
+  label_display: visible
+  provider: quicktabs
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /admin-dashboard

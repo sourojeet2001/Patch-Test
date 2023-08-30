@@ -1,0 +1,23 @@
+uuid: d4f1316c-9e8b-4286-93cd-68f888cc74b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_graduation_year
+  module:
+    - user
+    - yearonly
+id: user.user.field_graduation_year
+field_name: field_graduation_year
+entity_type: user
+bundle: user
+label: 'Graduation Year'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  yearonly_from: '2022'
+  yearonly_to: '2028'
+field_type: yearonly

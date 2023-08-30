@@ -1,0 +1,53 @@
+uuid: 277921f3-0c87-4d66-826b-fbe3ea9a5c2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_full_name
+    - field.field.user.user.field_graduation_year
+    - field.field.user.user.field_joining_year
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_stream
+    - field.field.user.user.user_picture
+  module:
+    - user
+_core:
+  default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_stream:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  language:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_full_name: true
+  field_graduation_year: true
+  field_joining_year: true
+  field_mobile_no: true
+  langcode: true
+  user_picture: true

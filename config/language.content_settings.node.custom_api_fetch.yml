@@ -1,0 +1,11 @@
+uuid: cf2fd03c-f79d-438f-b145-fbd55baa1f6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_api_fetch
+id: node.custom_api_fetch
+target_entity_type_id: node
+target_bundle: custom_api_fetch
+default_langcode: site_default
+language_alterable: false

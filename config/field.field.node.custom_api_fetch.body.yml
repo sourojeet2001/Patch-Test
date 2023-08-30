@@ -1,0 +1,24 @@
+uuid: 5d81c0e1-4706-47df-ba37-8334a14ab5ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.custom_api_fetch
+  module:
+    - text
+id: node.custom_api_fetch.body
+field_name: body
+entity_type: node
+bundle: custom_api_fetch
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

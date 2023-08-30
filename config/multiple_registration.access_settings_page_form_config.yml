@@ -1,0 +1,7 @@
+multiple_registration_pages_allowed_list:
+  student: student
+  anonymous: 0
+  authenticated: 0
+  content_editor: 0
+  administrator: 0
+  hod: 0

@@ -1,0 +1,7 @@
+elements: |
+  user_details:
+    '#title': "Détails de l'utilisateur"
+  name:
+    '#title': Nom
+  email:
+    '#title': ' E-mail'

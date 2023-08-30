@@ -1,0 +1,22 @@
+uuid: 8b2bc9dc-0f27-4c9e-8399-f6a80e8058b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_api_fetch
+id: node.custom_api_fetch.promote
+field_name: promote
+entity_type: node
+bundle: custom_api_fetch
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
