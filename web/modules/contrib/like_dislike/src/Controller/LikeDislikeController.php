@@ -94,109 +94,35 @@ class LikeDislikeController extends ControllerBase {
   public function handler($clicked, $data) {
     $response = new AjaxResponse();
     $uid = $this->currentUser->id();
-    if ($uid == 0) {
-      // If user is anonymous, ask user to Login or Register.
-      user_cookie_save(['destination' => $this->requestStack->getCurrentRequest()->get('like-dislike-redirect')]);
-      $response->addCommand(new OpenModalDialogCommand('Like/Dislike', $this->likeDislikeLoginRegister()));
+
+    // Get the users who already clicked on this particular content.
+    $decode_data = json_decode(base64_decode($data));
+    $entity_data = $this->entityTypeManager
+      ->getStorage($decode_data->entity_type)
+      ->load($decode_data->entity_id);
+    $field_name = $decode_data->field_name;
+    $already_clicked_users = json_decode($entity_data->$field_name->clicked_by);
+    if ($already_clicked_users == NULL) {
+      $entity_data->$field_name->likes = 0;
+      $entity_data->$field_name->dislikes = 0;
+      $already_clicked_users = new \stdClass();
+      $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
+      $entity_data->save();
+    }
+    if ($already_clicked_users == NULL) {
+      $entity_data->$field_name->likes = 0;
+      $entity_data->$field_name->dislikes = 0;
+      $already_clicked_users = new \stdClass();
+      $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
+      $entity_data->save();
+    }
+    if ($clicked == 'like') {
+      $entity_data->$field_name->likes++;
+      $entity_data->save();
+      $response->addCommand(new HtmlCommand('#like_dislike_status-' . $decode_data->entity_id, ''));
+      $response->addCommand(new HtmlCommand('#like-' . $decode_data->entity_id, (string) $entity_data->$field_name->likes));
       return $response;
     }
-    else {
-      // Get the users who already clicked on this particular content.
-      $decode_data = json_decode(base64_decode($data));
-      $entity_data = $this->entityTypeManager
-        ->getStorage($decode_data->entity_type)
-        ->load($decode_data->entity_id);
-      $field_name = $decode_data->field_name;
-      $already_clicked_users = json_decode($entity_data->$field_name->clicked_by);
-      if ($already_clicked_users == NULL) {
-        $entity_data->$field_name->likes = 0;
-        $entity_data->$field_name->dislikes = 0;
-        $already_clicked_users = new \stdClass();
-        $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
-        $entity_data->save();
-      }
-      // Update content, based on like/dislike.
-      $user_already_clicked = array_key_exists($uid, (array) $already_clicked_users);
-      if ($clicked == 'like') {
-        if (!$user_already_clicked) {
-          $entity_data->$field_name->likes++;
-          $already_clicked_users->$uid = 'like';
-          $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
-          $entity_data->save();
-          $response->addCommand(new HtmlCommand('#like_dislike_status-' . $decode_data->entity_id, ''));
-          $response->addCommand(new HtmlCommand('#like-' . $decode_data->entity_id, (string) $entity_data->$field_name->likes));
-          return $response;
-        }
-        elseif ($already_clicked_users->$uid == 'like') {
-          $response->addCommand(new HtmlCommand('#like_dislike_status-' . $decode_data->entity_id, 'You have already liked..!'));
-          return $response;
-        }
-        elseif ($already_clicked_users->$uid == 'dislike') {
-          $entity_data->$field_name->likes++;
-          $entity_data->$field_name->dislikes--;
-          $already_clicked_users->$uid = 'like';
-          $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
-          $entity_data->save();
-          $response->addCommand(new HtmlCommand('#like_dislike_status-' . $decode_data->entity_id, ''));
-          $response->addCommand(new HtmlCommand('#like-' . $decode_data->entity_id, (string) $entity_data->$field_name->likes));
-          $response->addCommand(new HtmlCommand('#dislike-' . $decode_data->entity_id, (string) $entity_data->$field_name->dislikes));
-          return $response;
-        }
-      }
-      elseif ($clicked == 'dislike') {
-        if (!$user_already_clicked) {
-          $entity_data->$field_name->dislikes++;
-          $already_clicked_users->$uid = 'dislike';
-          $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
-          $entity_data->save();
-          $response->addCommand(new HtmlCommand('#like_dislike_status-' . $decode_data->entity_id, ''));
-          $response->addCommand(new HtmlCommand('#dislike-' . $decode_data->entity_id, (string) $entity_data->$field_name->dislikes));
-          return $response;
-        }
-        elseif ($already_clicked_users->$uid == 'like') {
-          $entity_data->$field_name->likes--;
-          $entity_data->$field_name->dislikes++;
-          $already_clicked_users->$uid = 'dislike';
-          $entity_data->$field_name->clicked_by = $this->encodeAlreadyClickedUsers($already_clicked_users);
-          $entity_data->save();
-          $response->addCommand(new HtmlCommand('#like_dislike_status-' . $decode_data->entity_id, ''));
-          $response->addCommand(new HtmlCommand('#like-' . $decode_data->entity_id, (string) $entity_data->$field_name->likes));
-          return $response->addCommand(new HtmlCommand('#dislike-' . $decode_data->entity_id, (string) $entity_data->$field_name->dislikes));
-        }
-        elseif ($already_clicked_users->$uid == 'dislike') {
-          $response->addCommand(new HtmlCommand('#like_dislike_status-' . $decode_data->entity_id, 'You have already disliked..!'));
-          return $response;
-        }
-      }
-    }
-  }
-
-  /**
-   * Get the login and Registration options for anonymous user.
-   *
-   * @return mixed
-   *   Return rendered output.
-   */
-  protected function likeDislikeLoginRegister() {
-    $options = [
-      'attributes' => [
-        'class' => [
-          'use-ajax',
-          'login-popup-form',
-        ],
-        'data-dialog-type' => 'modal',
-      ],
-    ];
-    $user_register = Url::fromRoute('user.register')->setOptions($options);
-    $user_login = Url::fromRoute('user.login')->setOptions($options);
-    $register = Link::fromTextAndUrl($this->t('Register'), $user_register)->toString();
-    $login = Link::fromTextAndUrl($this->t('Log in'), $user_login)->toString();
-    $content = [
-      'content' => [
-        '#markup' => "Only logged-in users are allowed to like  or dislike. Visit " . $register . " | " . $login,
-      ],
-    ];
-    return $this->renderer->render($content);
   }
 
   /**
